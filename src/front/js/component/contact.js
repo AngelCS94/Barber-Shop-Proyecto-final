@@ -7,7 +7,7 @@ const Contact = () => {
 
         <div id="contact" className="contact">
             <img
-                src="https://res.cloudinary.com/dc87bxiqf/image/upload/v1725630270/Hero_Footer_s8c7ry.png"
+                src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 className="img-fluid-contact"
                 alt="..."/>
             <div className="titleMain text-white">

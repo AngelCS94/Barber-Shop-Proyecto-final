@@ -29,7 +29,7 @@ const InfoSection = () => {
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-12">
-                                <img src="https://res.cloudinary.com/dc87bxiqf/image/upload/v1725524096/imgInfoSection_uubktc.png" className="img-fluid-section" alt="..." />
+                                <img src="https://images.unsplash.com/photo-1496115965489-21be7e6e59a0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="img-fluid-section" alt="..." />
                             </div>
                         </div>
                     </div>

@@ -22,7 +22,7 @@ const Header = () => {
 
         <div className="titleheader">
           <h1 className='display-1 fw-bold'>Zabaleta Asociados</h1>
-          <h3>Tu administración de fincas de confianza</h3>
+          <h3>Tu administrador de fincas en Madrid</h3>
           <button
             className='btn btn-warning fw-bold'
             onClick={() => scrollToSection('contact')}
