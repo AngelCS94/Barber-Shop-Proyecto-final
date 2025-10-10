@@ -12,9 +12,9 @@ const Contact = () => {
                 alt="..."/>
             <div className="titleMain text-white">
                 <div className="titleContact">
-                    <h1 className="display-2 fw-bold pb-2 ms-5">CONTACT US</h1>
+                    <h1 className="display-2 fw-bold pb-2 ms-5">SOLICITA PRESUPUESTO</h1>
                     <h5 className="fw-bold ms-5">
-                        Fill out this form to contact you, to schedule an appointment with our specialists
+                        Solicita tu presupuesto personalizado en Madrid sin compromiso
                     </h5>
                 </div>
 
