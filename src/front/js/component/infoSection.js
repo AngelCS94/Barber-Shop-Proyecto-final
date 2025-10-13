@@ -1,42 +1,62 @@
-import React from 'react'
-import '../../styles/infoSection.css'
+import React from "react";
+import "../../styles/infoSection.css";
+
+const IMAGE_URL =
+"https://images.unsplash.com/photo-1627549569239-0d1119c96f1e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070";
+
+const SERVICES = [
+{ icon: "fa-file-invoice-dollar", title: "Balances contables trimestrales" },
+{ icon: "fa-handshake", title: "Revisión de contratos con proveedores" },
+{ icon: "fa-shield", title: "Optimización de pólizas, mantenimiento y reparaciones" },
+{ icon: "fa-bolt", title: "Revisión anual de los contratos de luz" },
+{ icon: "fa-people-group", title: "Trato personalizado y directo con los vecinos" },
+{ icon: "fa-building", title: "Visitas recurrentes a las comunidades" }
+];
 
 const InfoSection = () => {
-    return (
-        
-        <div className='infoSection'>
-            <div className="container">
-                <div className="cardSection">
-                    <div className="card" >
-                        <div className="row g-0">
-                            <div className="col-lg-6 col-md-12">
-                                <div className="card-body-section">
-                                    <div className="card-title-section p-5">
-                                        <h1 className='fw-bold text-start display-3 mb-5'>YOUR PERSONAL BARBER SERVICE AT YOUR HOME</h1>
-                                        <h5 className='text-start lh-lg'>La Barbería since 1966. A family business, barbershop in Madrid, with three generations, where father, son and their team currently work at the service of men's care.</h5>
-                                    </div>
-                                    <div className="card-text-section p-5">
-                                        <div className="container text-start">
-                                            <div className="row">
-                                                <div className="col-12 col-sm-4 fw-bold display-6 text-center">99</div>
-                                                <div className="col-12 col-sm-6 fs-5 pb-3">CUSTOMER SATISFACTION</div>
-                                                <div className="w-100 d-none d-md-block"></div>
-                                                <div className="col-12 col-sm-4 fw-bold display-6 text-center">10</div>
-                                                <div className="col-12 col-sm-6 fs-5">YEARS OF EXPERIENCE</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-6 col-md-12">
-                                <img src="https://images.unsplash.com/photo-1496115965489-21be7e6e59a0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="img-fluid-section" alt="..." />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+return (
+  <section id="services" className="services-split container">
+    <div className="split-grid">
+      {/* Imagen */}
+      <figure className="split-media">
+        <div className="media-inner">
+          <img
+            src={IMAGE_URL}
+            alt="Gestión y atención cercana a comunidades de vecinos"
+            className="split-img"
+            loading="lazy"
+            decoding="async"
+          />
+          <span className="media-overlay" aria-hidden="true"></span>
         </div>
-    )
-}
+      </figure>
 
-export default InfoSection
+      {/* Contenido */}
+      <div className="split-content">
+        <h2 className="fw-bold mb-2">Servicios de administración de fincas</h2>
+        <p className="lead text-muted mb-4">
+          Gestión integral y transparente para tu comunidad en Madrid. Nos ocupamos de todo para
+          que tú no tengas que preocuparte.
+        </p>
+
+        <div className="service-grid">
+          {SERVICES.map((s, i) => (
+            <div key={i} className="service-card">
+              <span className="icon-wrap" aria-hidden="true">
+                <i className={`fa-solid ${s.icon}`}></i>
+              </span>
+              <h6 className="service-title">{s.title}</h6>
+            </div>
+          ))}
+        </div>
+
+        <div className="cta-row">
+          <a href="#contact" className="btn btn-warning fw-bold">Solicita presupuesto</a>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+};
+
+export default InfoSection;

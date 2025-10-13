@@ -1,29 +1,42 @@
-/* Estilos generales del footer */
+/* Sentinel para IO */
+.footer-sentinel {
+width: 100%;
+height: 1px;
+}
+
+/* Footer oculto por defecto (se desliza desde abajo) */
 .footer {
-    position: fixed; /* Mantener el footer en la parte inferior */
-    bottom: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.968);
-    transition: transform 0.3s ease-in-out;
-    z-index: 1000; /*Asegura que el footer esté por encima de otros elementos*/
+position: fixed;
+left: 0;
+right: 0;
+bottom: 0;
+width: 100%;
+background-color: rgba(0, 0, 0, 0.96);
+transform: translateY(100%);
+transition: transform 0.35s ease;
+z-index: 1000;
+box-shadow: 0 -6px 16px rgba(0,0,0,0.15);
+padding-bottom: max(0px, env(safe-area-inset-bottom));
 }
 
-/* Mostrar el footer cuando se hace scroll hasta el final */
-
-
-/* Ocultar el footer cuando no se hace scroll hasta el final */
-
-
-/* Mostrar el footer al pasar el ratón por encima */
-
-
-.text {
-    color: aliceblue;
+/* Visible cuando estamos cerca del final */
+.footer.show {
+transform: translateY(0);
 }
 
-.icon i {
-    color: aliceblue;
+.text { color: #f1f5f9; }
+.icon i { color: #f1f5f9; }
+
+.footer .navbar {
+min-height: 52px;
+padding-top: 6px;
+padding-bottom: 6px;
 }
 
-/* Asegurarse que el hover no interfiera en pantallas táctiles */
-
+@media (max-width: 576px) {
+.footer .container-fluid {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.text { font-size: 14px; }
+}

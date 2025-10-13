@@ -14,7 +14,6 @@ export const Home = () => {
 		<div className="contenedor-page">
 			<Header /> {/* Sección del encabezado */}
 			<InfoSection /> {/* Sección de información */}
-			<Servicios /> {/* Sección de Servicios */}
 			<Contact /> {/* Sección de Contacto */}
 		</div>
 	);
