@@ -1,53 +1,163 @@
-.contact {
-position: relative;
-width: 100%;
-height: 100vh;
-margin-top: 0; /* antes 20% */
+/* Sección de contacto moderna y responsive */
+.contact-section {
+margin-bottom: clamp(24px, 6vw, 72px);
 }
 
-.img-fluid-contact {
+.contact-grid {
+display: grid;
+grid-template-columns: 1.05fr 1fr; /* imagen | card */
+gap: clamp(16px, 4vw, 40px);
+align-items: stretch;
+}
+
+/* Imagen con aire simétrico y bordes perfectos */
+.contact-media {
+--media-pad: clamp(10px, 1.6vw, 18px);
+padding: var(--media-pad);
+border-radius: 16px;
+background: transparent;
+}
+
+.media-inner {
+position: relative;
+overflow: hidden;
+border-radius: 12px;
+min-height: 320px;
+height: 100%;
+isolation: isolate;
+}
+
+.contact-img {
 width: 100%;
 height: 100%;
 object-fit: cover;
+display: block;
+border-radius: inherit;
+transform: translateZ(0);
 }
 
-.titleMain {
+.media-overlay {
 position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-text-align: start;
-color: white;
-padding: 0 15px;
-width: 100%;
+inset: 0;
+border-radius: inherit;
+background: linear-gradient(180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.10) 100%);
+opacity: .85;
+pointer-events: none;
 }
 
-.titleContact { padding-top: 0%; }
-
-.contact-info { display: flex; align-items: center; }
-
-.img-fluid-contact-icono {
-width: 50px;
-height: 50px;
-object-fit: contain;
+/* Tarjeta de formulario */
+.contact-card {
+background: #ffffff;
+border: 1px solid #e9ecef;
+border-radius: 16px;
+padding: clamp(16px, 4vw, 28px);
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
-/* estiliza solo el botón del bloque contact */
-.contact button {
-margin-top: 20px;
-padding: 10px 20px;
-font-size: 1rem;
-background-color: #F2C94C;
-font-weight: 800;
-border: none;
-cursor: pointer;
-border-radius: 8px;
+/* Canales rápidos */
+.quick-row {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+margin-bottom: 14px;
+}
+.quick-item {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+padding: 8px 12px;
+border: 1px solid #e9ecef;
+border-radius: 999px;
+background: #f8f9fa;
+color: #111827;
+text-decoration: none;
+font-weight: 600;
+}
+.quick-item:hover {
+background: #fff;
+box-shadow: 0 8px 18px rgba(0,0,0,0.06);
 }
 
-.map-container {
-width: 100%;
-height: 100vh;
-max-height: 450px;
+/* Formulario */
+.contact-form {
+display: grid;
+gap: 12px;
+}
+
+.form-row {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 12px;
+}
+
+.field {
+display: flex;
+flex-direction: column;
+gap: 6px;
+}
+
+.field label {
+font-weight: 700;
+color: #374151;
+}
+
+.field input,
+.field textarea {
+border: 1px solid #e5e7eb;
+border-radius: 10px;
+padding: 10px 12px;
+outline: none;
+color: #111827;
+background: #fff;
+transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.field textarea {
+resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+border-color: #F2C94C;
+box-shadow: 0 0 0 4px rgba(242, 201, 76, 0.25);
+}
+
+/* Botón: usamos Bootstrap pero afinamos márgenes */
+.contact-card .btn {
+margin-top: 6px;
+}
+
+/* Mapa */
+.map-card {
+margin-bottom: clamp(24px, 6vw, 72px);
+}
+.map-embed {
+border-radius: 16px;
 overflow: hidden;
-position: relative;
+border: 1px solid #e9ecef;
+box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+height: 380px;
+}
+.map-embed iframe {
+width: 100%;
+height: 100%;
+display: block;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+.contact-grid {
+  grid-template-columns: 1fr;   /* apila: imagen arriba, card abajo */
+}
+.media-inner {
+  min-height: 240px;
+}
+.form-row {
+  grid-template-columns: 1fr;   /* inputs en una columna */
+}
+}
+
+@media (max-width: 576px) {
+.quick-item { font-size: 0.95rem; }
+.map-embed { height: 320px; }
 }
