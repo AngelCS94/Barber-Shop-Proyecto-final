@@ -1,58 +1,33 @@
-/* Sección de contacto moderna y responsive */
+/* Contenedor general */
 .contact-section {
 margin-bottom: clamp(24px, 6vw, 72px);
 }
 
-.contact-grid {
-display: grid;
-grid-template-columns: 1.05fr 1fr; /* imagen | card */
-gap: clamp(16px, 4vw, 40px);
-align-items: stretch;
-}
-
-/* Imagen con aire simétrico y bordes perfectos */
-.contact-media {
---media-pad: clamp(10px, 1.6vw, 18px);
-padding: var(--media-pad);
-border-radius: 16px;
-background: transparent;
-}
-
-.media-inner {
-position: relative;
-overflow: hidden;
-border-radius: 12px;
-min-height: 320px;
-height: 100%;
-isolation: isolate;
-}
-
-.contact-img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-display: block;
-border-radius: inherit;
-transform: translateZ(0);
-}
-
-.media-overlay {
-position: absolute;
-inset: 0;
-border-radius: inherit;
-background: linear-gradient(180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.10) 100%);
-opacity: .85;
-pointer-events: none;
-}
-
-/* Tarjeta de formulario */
+/* Card unificada */
 .contact-card {
 background: #ffffff;
 border: 1px solid #e9ecef;
 border-radius: 16px;
 padding: clamp(16px, 4vw, 28px);
 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+overflow: hidden;
 }
+
+/* Grid interno: contenido | media (imagen un poco más pequeña en desktop) */
+.card-grid {
+display: grid;
+grid-template-columns: 1.25fr 0.75fr;   /* contenido | imagen */
+gap: clamp(16px, 3.2vw, 32px);
+align-items: stretch;
+}
+
+/* En pantallas muy anchas, reduce un poco más la imagen */
+@media (min-width: 1400px) {
+.card-grid { grid-template-columns: 1.35fr 0.65fr; }
+}
+
+.card-content h2 { margin: 0 0 4px 0; }
+.card-content p { margin: 0 0 12px 0; }
 
 /* Canales rápidos */
 .quick-row {
@@ -79,10 +54,7 @@ box-shadow: 0 8px 18px rgba(0,0,0,0.06);
 }
 
 /* Formulario */
-.contact-form {
-display: grid;
-gap: 12px;
-}
+.contact-form { display: grid; gap: 12px; }
 
 .form-row {
 display: grid;
@@ -90,16 +62,8 @@ grid-template-columns: repeat(2, minmax(0, 1fr));
 gap: 12px;
 }
 
-.field {
-display: flex;
-flex-direction: column;
-gap: 6px;
-}
-
-.field label {
-font-weight: 700;
-color: #374151;
-}
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-weight: 700; color: #374151; }
 
 .field input,
 .field textarea {
@@ -110,11 +74,11 @@ outline: none;
 color: #111827;
 background: #fff;
 transition: border-color .15s ease, box-shadow .15s ease;
+width: 100%;
+box-sizing: border-box;
 }
 
-.field textarea {
-resize: vertical;
-}
+.field textarea { resize: vertical; }
 
 .field input:focus,
 .field textarea:focus {
@@ -122,42 +86,51 @@ border-color: #F2C94C;
 box-shadow: 0 0 0 4px rgba(242, 201, 76, 0.25);
 }
 
-/* Botón: usamos Bootstrap pero afinamos márgenes */
+/* Botón */
+.submit-row { margin-top: 10px; }
 .contact-card .btn {
-margin-top: 6px;
+display: block;
+width: 100%;
+padding: 12px 16px;
+border-radius: 10px;
 }
 
-/* Mapa */
-.map-card {
-margin-bottom: clamp(24px, 6vw, 72px);
-}
-.map-embed {
-border-radius: 16px;
+/* Media dentro de la MISMA card */
+.card-media { margin: 0; }
+.media-inner {
+position: relative;
+border-radius: 12px;
 overflow: hidden;
-border: 1px solid #e9ecef;
-box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-height: 380px;
+/* Imagen un poco más compacta pero con presencia */
+min-height: clamp(240px, 24vh, 320px);
+height: 100%;
+isolation: isolate;
 }
-.map-embed iframe {
+.card-img {
 width: 100%;
 height: 100%;
+object-fit: cover;
 display: block;
+border-radius: inherit;
+}
+.media-overlay {
+position: absolute;
+inset: 0;
+border-radius: inherit;
+background: linear-gradient(180deg, rgba(0,0,0,0.00) 0%, rgba(0,0,0,0.10) 100%);
+opacity: .85;
+pointer-events: none;
 }
 
-/* Responsive */
+/* Responsive: imagen primero en móvil/tablet */
 @media (max-width: 992px) {
-.contact-grid {
-  grid-template-columns: 1fr;   /* apila: imagen arriba, card abajo */
-}
-.media-inner {
-  min-height: 240px;
-}
-.form-row {
-  grid-template-columns: 1fr;   /* inputs en una columna */
-}
+.card-grid { grid-template-columns: 1fr; }
+.card-media { order: -1; }  /* imagen arriba */
+.media-inner { min-height: 260px; }
+.form-row { grid-template-columns: 1fr; }
+.submit-row { margin-top: 12px; }
 }
 
 @media (max-width: 576px) {
 .quick-item { font-size: 0.95rem; }
-.map-embed { height: 320px; }
 }

@@ -1,10 +1,8 @@
-/* Sentinel para IO */
-.footer-sentinel {
-width: 100%;
-height: 1px;
+/* Footer fijo que solo aparece cerca del final */
+:root {
+--footer-height: 56px; /* ajusta si cambias la altura del navbar del footer */
 }
 
-/* Footer oculto por defecto (se desliza desde abajo) */
 .footer {
 position: fixed;
 left: 0;
@@ -12,27 +10,33 @@ right: 0;
 bottom: 0;
 width: 100%;
 background-color: rgba(0, 0, 0, 0.96);
-transform: translateY(100%);
+transform: translateY(100%);      /* oculto por defecto (debajo del viewport) */
 transition: transform 0.35s ease;
 z-index: 1000;
 box-shadow: 0 -6px 16px rgba(0,0,0,0.15);
 padding-bottom: max(0px, env(safe-area-inset-bottom));
 }
 
-/* Visible cuando estamos cerca del final */
 .footer.show {
-transform: translateY(0);
+transform: translateY(0);         /* visible cuando se cumple la condición */
 }
 
 .text { color: #f1f5f9; }
 .icon i { color: #f1f5f9; }
 
 .footer .navbar {
-min-height: 52px;
+min-height: var(--footer-height);
 padding-top: 6px;
 padding-bottom: 6px;
 }
 
+/* Cuando el footer es visible, reservamos espacio al final del documento
+ para que no tape el último contenido (p.e., el botón del contacto). */
+body.has-sticky-footer {
+padding-bottom: calc(var(--footer-height) + 12px);
+}
+
+/* Responsive */
 @media (max-width: 576px) {
 .footer .container-fluid {
   padding-left: 12px;

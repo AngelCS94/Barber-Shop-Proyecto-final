@@ -17,34 +17,19 @@ const handleChange = (e) => {
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  // Aquí puedes integrar tu envío (fetch/EmailJS/etc.)
   console.log("Contacto:", form);
   alert("Gracias. Te contactaremos lo antes posible.");
   setForm({ name: "", email: "", phone: "", subject: "", message: "" });
 };
 
 return (
-  <>
-    <section id="contact" className="contact-section container">
-      <div className="contact-grid">
-        {/* Imagen */}
-        <figure className="contact-media">
-          <div className="media-inner">
-            <img
-              src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?q=80&w=1600&auto=format&fit=crop"
-              alt="Atención y asesoría para tu comunidad"
-              className="contact-img"
-              loading="lazy"
-              decoding="async"
-            />
-            <span className="media-overlay" aria-hidden="true"></span>
-          </div>
-        </figure>
-
-        {/* Contenido y formulario */}
-        <div className="contact-card">
+  <section id="contact" className="contact-section container">
+    <div className="contact-card">
+      <div className="card-grid">
+        {/* Contenido y formulario (IZQUIERDA en desktop) */}
+        <div className="card-content">
           <h2 className="fw-bold mb-2">Solicita presupuesto</h2>
-          <p className="lead text-muted mb-4">
+          <p className="lead text-muted mb-3">
             Solicita tu presupuesto personalizado en Madrid sin compromiso.
           </p>
 
@@ -132,28 +117,30 @@ return (
               />
             </div>
 
-            <button type="submit" className="btn btn-warning fw-bold">
-              Enviar solicitud
-            </button>
+            <div className="submit-row">
+              <button type="submit" className="btn btn-warning fw-bold w-100">
+                Enviar solicitud
+              </button>
+            </div>
           </form>
         </div>
-      </div>
-    </section>
 
-    {/* Mapa (opcional) */}
-    <section className="map-card container">
-      <div className="map-embed">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.598423755146!2d-3.683553222811296!3d40.439888254227704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422989055a08a7%3A0xb1a742c609c68c4b!2s4Geeks%20Academy%20Espa%C3%B1a!5e0!3m2!1ses!2ses!4v1725646287369!5m2!1ses!2ses"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Mapa ubicación"
-        />
+        {/* Imagen (DERECHA en desktop, ARRIBA en móvil) */}
+        <figure className="card-media">
+          <div className="media-inner">
+            <img
+              src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?q=80&w=1600&auto=format&fit=crop"
+              alt="Atención y asesoría para tu comunidad"
+              className="card-img"
+              loading="lazy"
+              decoding="async"
+            />
+            <span className="media-overlay" aria-hidden="true"></span>
+          </div>
+        </figure>
       </div>
-    </section>
-  </>
+    </div>
+  </section>
 );
 };
 

@@ -15,43 +15,45 @@ const SERVICES = [
 
 const InfoSection = () => {
 return (
-  <section id="services" className="services-split container">
-    <div className="split-grid">
-      {/* Imagen */}
-      <figure className="split-media">
-        <div className="media-inner">
-          <img
-            src={IMAGE_URL}
-            alt="Gestión y atención cercana a comunidades de vecinos"
-            className="split-img"
-            loading="lazy"
-            decoding="async"
-          />
-          <span className="media-overlay" aria-hidden="true"></span>
-        </div>
-      </figure>
+  <section id="services" className="container">
+    <div className="services-split">
+      <div className="split-grid">
+        {/* Imagen (izquierda) */}
+        <figure className="split-media">
+          <div className="media-inner">
+            <img
+              src={IMAGE_URL}
+              alt="Gestión y atención cercana a comunidades de vecinos"
+              className="split-img"
+              loading="lazy"
+              decoding="async"
+            />
+            <span className="media-overlay" aria-hidden="true"></span>
+          </div>
+        </figure>
 
-      {/* Contenido */}
-      <div className="split-content">
-        <h2 className="fw-bold mb-2">Servicios de administración de fincas</h2>
-        <p className="lead text-muted mb-4">
-          Gestión integral y transparente para tu comunidad en Madrid. Nos ocupamos de todo para
-          que tú no tengas que preocuparte.
-        </p>
+        {/* Contenido (derecha) */}
+        <div className="split-content">
+          <h2 className="fw-bold mb-2">Servicios de administración de fincas</h2>
+          <p className="lead text-muted mb-4">
+            Gestión integral y transparente para tu comunidad en Madrid. Nos ocupamos de todo para
+            que tú no tengas que preocuparte.
+          </p>
 
-        <div className="service-grid">
-          {SERVICES.map((s, i) => (
-            <div key={i} className="service-card">
-              <span className="icon-wrap" aria-hidden="true">
-                <i className={`fa-solid ${s.icon}`}></i>
-              </span>
-              <h6 className="service-title">{s.title}</h6>
-            </div>
-          ))}
-        </div>
+          <div className="service-grid">
+            {SERVICES.map((s, i) => (
+              <div key={i} className="service-card">
+                <span className="icon-wrap" aria-hidden="true">
+                  <i className={`fa-solid ${s.icon}`}></i>
+                </span>
+                <h6 className="service-title">{s.title}</h6>
+              </div>
+            ))}
+          </div>
 
-        <div className="cta-row">
-          <a href="#contact" className="btn btn-warning fw-bold">Solicita presupuesto</a>
+          <div className="cta-row">
+            <a href="#contact" className="btn btn-warning fw-bold">Solicita presupuesto</a>
+          </div>
         </div>
       </div>
     </div>
