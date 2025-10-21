@@ -36,72 +36,58 @@ import EmployeeRegister from "./pages/EmployeeRegister";
 
 // Aquí se crean las rutas principales, incluida la que apunta a la sección de servicios
 const Layout = () => {
-    const basename = process.env.BASENAME || "";
+const basename = process.env.BASENAME || "";
 
-    return (
-        <div className="contenedor-page">
-            <BrowserRouter basename={basename}>
-                <ScrollToTop>
-                    <Navbar /> {/* Incluimos la Navbar */}
-                    <Routes>
-                        <Route element={<Home />} path="/" /> {/* Ruta para la home */}
-                        <Route element={<Login />} path="/login" />
-                        <Route element={<Demo />} path="/demo" />
-                        <Route element={<Single />} path="/single/:theid" />
+return (
+  <div className="contenedor-page" id="app-root">
+    <BrowserRouter basename={basename}>
+      <ScrollToTop>
+        <Navbar />
 
-                        {/* Ruta para BookAppointment */}
-                        <Route element={<BookAppointment />} path="/book-appointment" />
+        <Routes>
+          <Route element={<Home />} path="/" />
+          <Route element={<Login />} path="/login" />
+          <Route element={<Demo />} path="/demo" />
+          <Route element={<Single />} path="/single/:theid" />
 
-                        {/* Ruta para seleccionar servicios */}
-                        <Route element={<BookAppointment_Services />} path="/book-appointment-services" />
+          <Route element={<BookAppointment />} path="/book-appointment" />
+          <Route element={<BookAppointment_Services />} path="/book-appointment-services" />
+          <Route element={<BookAppointment_Proffesional />} path="/book-appointment-proffesional" />
+          <Route element={<BookAppointment_Date />} path="/book-appointment-date" />
 
-                        {/* Ruta para seleccionar profesionales */}
-                        <Route element={<BookAppointment_Proffesional />} path="/book-appointment-proffesional" />
+          <Route element={<LogIn_Costumer />} path="/login-customers" />
+          <Route element={<Login_Costumer_2 />} path="/login-customers-2" />
 
-                        {/* Ruta para seleccionar fecha */}
-                        <Route element={<BookAppointment_Date />} path="/book-appointment-date" />
+          <Route element={<SignUpPage />} path="/sign-up" />
+          <Route element={<SignUp />} path="/register" />
+          <Route element={<EmployeeRegister />} path="/employee-register" />
 
-                        {/* Ruta para iniciar sesión con clientes */}
-                        <Route element={<LogIn_Costumer />} path="/login-customers" />
+          <Route element={<Dashboard />} path="/dashboard" />
+          <Route element={<DashboardCustomer />} path="/dashboard-customer" />
 
-                        {/* Ruta para loguearse con correo y contraseña */}
-                        <Route element={<Login_Costumer_2 />} path="/login-customers-2" />
+          <Route element={<UpdateEmployeeCard />} path="/update-employee" />
+          <Route element={<UpdateCustomerCard />} path="/update-customer" />
 
-                        {/* Ruta para la página de registro */}
-                        <Route element={<SignUpPage />} path="/sign-up" />
+          <Route element={<ReviewAndConfirm />} path="/book-appointment-resume" />
+          <Route element={<BookAppointment_Confirm />} path="/book-appointment-confirm" />
 
-                        <Route element={<SignUp />} path="/register"/>
-                        <Route element={<EmployeeRegister/>} path="/employee-register"/>
+          <Route element={<PasswordResetRequest />} path="/password-reset-request" />
+          <Route element={<PasswordReset />} path="/reset-password" />
 
-                        {/* Ruta para los dashboards */}
-                        <Route element={<Dashboard />} path="/dashboard" />
-                        
-                        <Route element={<DashboardCustomer />} path="/dashboard-customer" />
+          <Route element={<SummaryCard />} path="/summarycard" />
 
-                        {/* Ruta para actualizar empleado */}
-                        <Route element={<UpdateEmployeeCard />} path="/update-employee" />
-                        <Route element={<UpdateCustomerCard />} path="/update-customer" />
+          <Route element={<h1>Not found!</h1>} path="*" />
+        </Routes>
 
-                        {/* Ruta para confirmar la cita */}
-                        <Route element={<ReviewAndConfirm />} path="/book-appointment-resume" />
+        {/* Sentinela para que el Footer aparezca al acercarse al final */}
+        <div id="footer-sentinel" style={{ height: 1 }} aria-hidden="true" />
 
-                        <Route element={<BookAppointment_Confirm />} path="/book-appointment-confirm" />
-
-                        {/* Rutas de recuperación de contraseña */}
-                        <Route element={<PasswordResetRequest />} path="/password-reset-request" />
-                        <Route element={<PasswordReset />} path="/reset-password" />
-
-                        {/* Ruta de tarjeta de resumen */}
-                        <Route element={<SummaryCard />} path="/summarycard" />
-
-                        {/* Ruta de fallback para 404 */}
-                        <Route element={<h1>Not found!</h1>} path="*" />
-                    </Routes>
-                    <Footer /> {/* Incluimos el Footer */}
-                </ScrollToTop>
-            </BrowserRouter>
-        </div>
-    );
+        {/* Footer que observa el sentinela */}
+        <Footer sentinelSelector="#footer-sentinel" />
+      </ScrollToTop>
+    </BrowserRouter>
+  </div>
+);
 };
 
 export default injectContext(Layout);

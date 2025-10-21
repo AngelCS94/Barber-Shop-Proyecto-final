@@ -1,39 +1,58 @@
-import React, { useState, useEffect } from "react";
-import "../../styles/footer.css";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../../styles/footer.css";
 
-export const Footer = () => {
+export const Footer = ({
+// Si tu app scrollea en un contenedor (por ej. #app-root), pásalo aquí.
+// Si el scroll es del window, deja esto en null.
+scrollContainerSelector = null,
+threshold = 80 // píxeles antes del final para mostrar
+}) => {
 const [isVisible, setIsVisible] = useState(false);
 
 useEffect(() => {
-  const THRESHOLD = 60; // píxeles desde el final para mostrar
+  const container = scrollContainerSelector ? document.querySelector(scrollContainerSelector) : null;
+  const scroller = document.scrollingElement || document.documentElement;
+  const target = container || window;
 
-  const onScrollOrResize = () => {
-    const doc = document.documentElement;
-    const body = document.body;
-
-    const scrollTop = doc.scrollTop || body.scrollTop || 0;
-    const clientHeight = doc.clientHeight || window.innerHeight || 0;
-    const scrollHeight = Math.max(doc.scrollHeight, body.scrollHeight);
-
-    const nearBottom = scrollTop + clientHeight >= scrollHeight - THRESHOLD;
-    setIsVisible(nearBottom);
+  const getMetrics = () => {
+    if (container) {
+      return {
+        st: container.scrollTop,
+        vh: container.clientHeight,
+        sh: container.scrollHeight
+      };
+    }
+    return {
+      st: scroller.scrollTop,
+      vh: window.innerHeight,
+      sh: scroller.scrollHeight
+    };
   };
 
-  window.addEventListener("scroll", onScrollOrResize, { passive: true });
-  window.addEventListener("resize", onScrollOrResize);
-  onScrollOrResize();
+  const update = () => {
+    const { st, vh, sh } = getMetrics();
+    const hasScroll = sh > vh + 1;             // solo mostrar si hay scroll real
+    const nearBottom = st + vh >= sh - threshold;
+    setIsVisible(hasScroll && nearBottom);
+  };
+
+  target.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+
+  // estado inicial
+  update();
 
   return () => {
-    window.removeEventListener("scroll", onScrollOrResize);
-    window.removeEventListener("resize", onScrollOrResize);
+    target.removeEventListener("scroll", update);
+    window.removeEventListener("resize", update);
   };
-}, []);
+}, [scrollContainerSelector, threshold]);
 
+// Reserva espacio solo cuando es visible para no tapar el último contenido
 useEffect(() => {
-  const cls = "has-sticky-footer";
-  document.body.classList.toggle(cls, isVisible);
-  return () => document.body.classList.remove(cls);
+  document.body.classList.toggle("has-sticky-footer", isVisible);
+  return () => document.body.classList.remove("has-sticky-footer");
 }, [isVisible]);
 
 return (

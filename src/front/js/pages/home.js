@@ -8,13 +8,13 @@ import Servicios from "../component/servicios"; // Este es el componente de Serv
 import Contact from "../component/contact";
 
 export const Home = () => {
-	const { store, actions } = useContext(Context);
+const { store, actions } = useContext(Context);
 
-	return (
-		<div className="contenedor-page">
-			<Header /> {/* Sección del encabezado */}
-			<InfoSection /> {/* Sección de información */}
-			<Contact /> {/* Sección de Contacto */}
-		</div>
-	);
+return (
+  <main>
+    <Header />
+    <InfoSection />
+    <Contact />
+  </main>
+);
 };
